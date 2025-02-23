@@ -1,7 +1,9 @@
-import { ok, noContent, HttpResponse } from "../utils/http-helper";
+import * as PlayerRepository from "../repositories/player-repository";
+import {HttpResponse } from "../models/http-response-model";
+import { ok, noContent } from "../utils/http-helper";
 
 export const getPlayerService = async (): Promise<HttpResponse> => {
-  const data = { player: "Messi" };
+  const data = await PlayerRepository.findAllPlayers();
   let response: HttpResponse;
 
   if (data) {
