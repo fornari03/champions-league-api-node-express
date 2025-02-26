@@ -32,6 +32,21 @@ export const getPlayerByIdService = async (
   return response;
 };
 
+export const getPlayersByClubNameService = async (
+  club: string
+): Promise<HttpResponse> => {
+  const data = await PlayerRepository.findPlayersByClubName(club);
+  let response: HttpResponse;
+
+  if (data) {
+    response = await HttpHelper.ok(data);
+  } else {
+    response = await HttpHelper.noContent();
+  }
+
+  return response;
+}
+
 export const createPlayerService = async (
   player: PlayerModel
 ): Promise<HttpResponse> => {

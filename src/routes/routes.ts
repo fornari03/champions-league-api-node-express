@@ -8,6 +8,7 @@ const router = Router();
 
 router.get("/players", PlayerController.getPlayer);
 router.get("/players/:id", PlayerController.getPlayerById);
+router.get("/players/club/:club", PlayerController.getPlayersByClubName);
 
 router.patch("/players/:id", PlayerController.updatePlayer);
 

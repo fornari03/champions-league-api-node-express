@@ -38,6 +38,23 @@ export const findPlayerById = async (
   } as PlayerModel;
 };
 
+export const findPlayersByClubName = async (
+  club: string
+): Promise<PlayerModel[]> => {
+  const players = await db.collection("players").find({ club: club }).toArray();
+  return players.map((player) => {
+    const { _id, name, club, nationality, position, statistics } = player;
+    return {
+      _id,
+      name,
+      club,
+      nationality,
+      position,
+      statistics,
+    } as PlayerModel;
+  });
+};
+
 export const insertPlayer = async (
   player: PlayerModel
 ): Promise<PlayerModel | null> => {

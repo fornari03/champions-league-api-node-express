@@ -4,7 +4,8 @@ import {
   getPlayerService,
   createPlayerService,
   deletePlayerService,
-  updatePlayerService
+  updatePlayerService,
+  getPlayersByClubNameService,
 } from "../services/players-service";
 import { StatisticsModel } from "../models/statistics-model";
 
@@ -18,6 +19,14 @@ export const getPlayerById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   const httpResponse = await getPlayerByIdService(id);
+
+  res.status(httpResponse.statusCode).json(httpResponse.body);
+};
+
+export const getPlayersByClubName = async (req: Request, res: Response) => {
+  const { club } = req.params;
+
+  const httpResponse = await getPlayersByClubNameService(club);
 
   res.status(httpResponse.statusCode).json(httpResponse.body);
 };
@@ -43,4 +52,4 @@ export const updatePlayer = async (req: Request, res: Response) => {
   const httpResponse = await updatePlayerService(id, bodyStats);
 
   res.status(httpResponse.statusCode).json(httpResponse.body);
-}
+};
