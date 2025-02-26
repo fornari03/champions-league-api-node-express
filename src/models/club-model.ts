@@ -1,4 +1,6 @@
+import { ObjectId } from "mongodb";
+
 export interface ClubModel {
-  id: number;
+  _id: ObjectId;
   name: string;
 }
