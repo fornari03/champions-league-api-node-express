@@ -65,7 +65,7 @@ export const deletePlayerService = async (
   if (data) {
     response = await HttpHelper.ok(data);
   } else {
-    response = await HttpHelper.noContent();
+    response = await HttpHelper.badRequest();
   }
 
   return response;
@@ -82,7 +82,7 @@ export const updatePlayerService = async (
   if (data) {
     response = await HttpHelper.ok(data);
   } else {
-    response = await HttpHelper.noContent();
+    response = await HttpHelper.badRequest();
   }
 
   return response;
