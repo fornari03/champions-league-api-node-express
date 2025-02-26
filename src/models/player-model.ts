@@ -1,5 +1,7 @@
+import { ObjectId } from "mongodb";
+
 export interface PlayerModel {
-  id: number;
+  _id: ObjectId;
   name: string;
   club: string;
   nationality: string;

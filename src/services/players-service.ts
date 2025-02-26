@@ -18,7 +18,7 @@ export const getPlayerService = async (): Promise<HttpResponse> => {
 };
 
 export const getPlayerByIdService = async (
-  id: number
+  id: string
 ): Promise<HttpResponse> => {
   const data = await PlayerRepository.findPlayerById(id);
   let response: HttpResponse;
@@ -40,7 +40,8 @@ export const createPlayerService = async (
     !player.club ||
     !player.nationality ||
     !player.position ||
-    !player.statistics
+    !player.statistics ||
+    player._id
   ) {
     return await HttpHelper.badRequest();
   }
@@ -57,7 +58,7 @@ export const createPlayerService = async (
 };
 
 export const deletePlayerService = async (
-  id: number
+  id: string
 ): Promise<HttpResponse> => {
   const data = await PlayerRepository.deletePlayer(id);
   let response: HttpResponse;
@@ -72,7 +73,7 @@ export const deletePlayerService = async (
 };
 
 export const updatePlayerService = async (
-  id: number,
+  id: string,
   statistics: StatisticsModel
 ): Promise<HttpResponse> => {
   const data = await PlayerRepository.updatePlayer(id, statistics);
