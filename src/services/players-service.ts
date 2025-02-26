@@ -2,6 +2,7 @@ import * as PlayerRepository from "../repositories/player-repository";
 import { HttpResponse } from "../models/http-response-model";
 import * as HttpHelper from "../utils/http-helper";
 import { PlayerModel } from "../models/player-model";
+import { StatisticsModel } from "../models/statistics-model";
 
 export const getPlayerService = async (): Promise<HttpResponse> => {
   const data = await PlayerRepository.findAllPlayers();
@@ -69,3 +70,21 @@ export const deletePlayerService = async (
 
   return response;
 };
+
+export const updatePlayerService = async (
+  id: number,
+  statistics: StatisticsModel
+): Promise<HttpResponse> => {
+  const data = await PlayerRepository.updatePlayer(id, statistics);
+
+  let response: HttpResponse;
+
+  if (data) {
+    response = await HttpHelper.ok(data);
+  } else {
+    response = await HttpHelper.noContent();
+  }
+
+  return response;
+};
+

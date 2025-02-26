@@ -4,7 +4,9 @@ import {
   getPlayerService,
   createPlayerService,
   deletePlayerService,
+  updatePlayerService
 } from "../services/players-service";
+import { StatisticsModel } from "../models/statistics-model";
 
 export const getPlayer = async (req: Request, res: Response) => {
   const httpResponse = await getPlayerService();
@@ -33,3 +35,12 @@ export const deletePlayer = async (req: Request, res: Response) => {
 
   res.status(httpResponse.statusCode).json(httpResponse.body);
 };
+
+export const updatePlayer = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const bodyStats: StatisticsModel = req.body;
+
+  const httpResponse = await updatePlayerService(parseInt(id), bodyStats);
+
+  res.status(httpResponse.statusCode).json(httpResponse.body);
+}
