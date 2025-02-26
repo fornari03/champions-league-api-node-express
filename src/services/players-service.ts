@@ -54,3 +54,18 @@ export const createPlayerService = async (
 
   return response;
 };
+
+export const deletePlayerService = async (
+  id: number
+): Promise<HttpResponse> => {
+  const data = await PlayerRepository.deletePlayer(id);
+  let response: HttpResponse;
+
+  if (data) {
+    response = await HttpHelper.ok(data);
+  } else {
+    response = await HttpHelper.noContent();
+  }
+
+  return response;
+};

@@ -326,3 +326,15 @@ export const insertPlayer = async (
 
   return newPlayer;
 }
+
+export const deletePlayer = async (id: number): Promise<PlayerModel | null> => {
+  const playerIndex = database.findIndex((player) => player.id === id);
+
+  if (playerIndex === -1) {
+    return null;
+  }
+
+  const deletedPlayer = database.splice(playerIndex, 1);
+
+  return deletedPlayer[0];
+};
