@@ -21,12 +21,14 @@
   },
   "homepage": "https://github.com/fornari03/champions-league-api-node-express#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "tsup": "^2.0.3",
     "tsx": "^4.19.3",
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.2"
   }
 }
