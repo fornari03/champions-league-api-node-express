@@ -9,9 +9,7 @@ function createApp() {
 
   app.use("/api", router);
 
-  const corsOptions = {
-    origin: "*"
-  }
+  const corsOptions = {}
 
   app.use(cors(corsOptions))
 
